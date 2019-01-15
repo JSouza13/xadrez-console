@@ -6,6 +6,7 @@ namespace xadrez_console
     {
         static void Main(string[] args)
         {
+
         }
     }
 }
