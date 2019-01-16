@@ -2,7 +2,7 @@
 {
     enum Cor
     {
-        Banca,
+        Branca,
         Preta,
         Amarela,
         Azul,
