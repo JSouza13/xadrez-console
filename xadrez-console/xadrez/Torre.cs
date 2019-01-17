@@ -2,7 +2,7 @@
 
 namespace xadrez
 {
-    class Torre : Peca
+    internal class Torre : Peca
     {
         public Torre(Tabuleiro tabuleiro, Cor cor) : base(cor, tabuleiro)
         {
@@ -27,18 +27,6 @@ namespace xadrez
 
             // Acima
             pos.definirValores(Posicao.Linha - 1, Posicao.Coluna);
-            while(Tab.posicaoValida(pos) && podeMover(pos))
-            {
-                matriz[pos.Linha, pos.Coluna] = true;
-                if(Tab.peca(pos) != null && Tab.peca(pos).Cor != Cor)
-                {
-                    break;
-                }
-                pos.Linha = pos.Linha - 1;
-            }
-
-            // Direita
-            pos.definirValores(Posicao.Linha - 1, Posicao.Coluna);
             while (Tab.posicaoValida(pos) && podeMover(pos))
             {
                 matriz[pos.Linha, pos.Coluna] = true;
@@ -47,6 +35,18 @@ namespace xadrez
                     break;
                 }
                 pos.Linha = pos.Linha - 1;
+            }
+
+            // Direita
+            pos.definirValores(Posicao.Linha, Posicao.Coluna + 1);
+            while (Tab.posicaoValida(pos) && podeMover(pos))
+            {
+                matriz[pos.Linha, pos.Coluna] = true;
+                if (Tab.peca(pos) != null && Tab.peca(pos).Cor != Cor)
+                {
+                    break;
+                }
+                pos.Linha = pos.Coluna + 1;
             }
 
             // Abaixo
@@ -62,7 +62,7 @@ namespace xadrez
             }
 
             // Esquerda
-            pos.definirValores(Posicao.Linha - 1, Posicao.Coluna);
+            pos.definirValores(Posicao.Linha, Posicao.Coluna - 1);
             while (Tab.posicaoValida(pos) && podeMover(pos))
             {
                 matriz[pos.Linha, pos.Coluna] = true;
@@ -70,7 +70,7 @@ namespace xadrez
                 {
                     break;
                 }
-                pos.Linha = pos.Linha - 1;
+                pos.Linha = pos.Coluna - 1;
             }
             return matriz;
         }
