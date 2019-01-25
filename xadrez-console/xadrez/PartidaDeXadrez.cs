@@ -29,7 +29,7 @@ namespace xadrez
 
         private void colocarPecas()
         {
-            Tabuleiro.colocarPeca(new Rei(Tabuleiro, Cor.Branca), new PosicaoXadrez('c', 1).toPosicao());
+            Tabuleiro.colocarPeca(new Torre(Tabuleiro, Cor.Branca), new PosicaoXadrez('c', 1).toPosicao());
            
         }
     }

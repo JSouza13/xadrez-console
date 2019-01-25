@@ -46,7 +46,7 @@ namespace xadrez
                 {
                     break;
                 }
-                pos.Linha = pos.Coluna + 1;
+                pos.Coluna = pos.Coluna + 1;
             }
 
             // Abaixo
@@ -70,7 +70,7 @@ namespace xadrez
                 {
                     break;
                 }
-                pos.Linha = pos.Coluna - 1;
+                pos.Coluna = pos.Coluna - 1;
             }
             return matriz;
         }
