@@ -5,7 +5,7 @@ using xadrez;
 
 namespace xadrez_console
 {
-    class Tela
+    internal class Tela
     {
         public static void imprimirPartida(PartidaDeXadrez partida)
         {
@@ -13,10 +13,18 @@ namespace xadrez_console
             Console.WriteLine();
             imprimirPecasCapturadas(partida);
             Console.WriteLine("\nTurno: " + partida.Turno);
-            Console.WriteLine("Aguardando jogada: " + partida.JogadorAtual);
-            if(partida.Xeque)
+            if (!partida.Terminada)
             {
-                Console.WriteLine("\nVOCÊ ESTÁ EM XEQUE!!");
+                Console.WriteLine("Aguardando jogada: " + partida.JogadorAtual);
+                if (partida.Xeque)
+                {
+                    Console.WriteLine("\nVOCÊ ESTÁ EM XEQUE!!");
+                }
+            }
+            else
+            {
+                Console.WriteLine("XEQUEMATE!!!");
+                Console.WriteLine("Vencedor: " + partida.JogadorAtual);
             }
         }
 
@@ -36,7 +44,7 @@ namespace xadrez_console
         public static void imprimirConjunto(HashSet<Peca> conjunto)
         {
             Console.Write("[");
-            foreach(Peca x in conjunto)
+            foreach (Peca x in conjunto)
             {
                 Console.Write(x + " ");
             }
@@ -49,8 +57,8 @@ namespace xadrez_console
             {
                 Console.Write(8 - i + " ");
                 for (int j = 0; j < tab.Colunas; j++)
-                {                 
-                    imprimiPeca(tab.peca(i, j));           
+                {
+                    imprimiPeca(tab.peca(i, j));
                 }
                 Console.WriteLine();
             }
@@ -67,7 +75,7 @@ namespace xadrez_console
                 Console.Write(8 - i + " ");
                 for (int j = 0; j < tab.Colunas; j++)
                 {
-                    if(posicoesPossiveis[i,j] == true)
+                    if (posicoesPossiveis[i, j] == true)
                     {
                         Console.BackgroundColor = fundoAlterado;
                     }
