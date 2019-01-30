@@ -2,15 +2,15 @@
 
 namespace Xadrez
 {
-    internal class Torre : Peca
+    class Dama : Peca
     {
-        public Torre(Tabuleiro tabuleiro, Cor cor) : base(cor, tabuleiro)
+        public Dama(Tabuleiro tabuleiro, Cor cor) : base(cor, tabuleiro)
         {
         }
 
         public override string ToString()
         {
-            return "T";
+            return "D";
         }
 
         private bool podeMover(Posicao pos)
@@ -72,6 +72,55 @@ namespace Xadrez
                 }
                 pos.Coluna = pos.Coluna - 1;
             }
+
+            // Noroeste
+            pos.definirValores(Posicao.Linha - 1, Posicao.Coluna - 1);
+            while (Tab.posicaoValida(pos) && podeMover(pos))
+            {
+                matriz[pos.Linha, pos.Coluna] = true;
+                if (Tab.peca(pos) != null && Tab.peca(pos).Cor != Cor)
+                {
+                    break;
+                }
+                pos.definirValores(pos.Linha - 1, pos.Coluna - 1);
+            }
+
+            // Nordeste
+            pos.definirValores(Posicao.Linha - 1, Posicao.Coluna + 1);
+            while (Tab.posicaoValida(pos) && podeMover(pos))
+            {
+                matriz[pos.Linha, pos.Coluna] = true;
+                if (Tab.peca(pos) != null && Tab.peca(pos).Cor != Cor)
+                {
+                    break;
+                }
+                pos.definirValores(pos.Linha - 1, pos.Coluna + 1);
+            }
+
+            // Sudeste
+            pos.definirValores(Posicao.Linha + 1, Posicao.Coluna + 1);
+            while (Tab.posicaoValida(pos) && podeMover(pos))
+            {
+                matriz[pos.Linha, pos.Coluna] = true;
+                if (Tab.peca(pos) != null && Tab.peca(pos).Cor != Cor)
+                {
+                    break;
+                }
+                pos.definirValores(pos.Linha + 1, pos.Coluna + 1);
+            }
+
+            // Sudoeste
+            pos.definirValores(Posicao.Linha + 1, Posicao.Coluna - 1);
+            while (Tab.posicaoValida(pos) && podeMover(pos))
+            {
+                matriz[pos.Linha, pos.Coluna] = true;
+                if (Tab.peca(pos) != null && Tab.peca(pos).Cor != Cor)
+                {
+                    break;
+                }
+                pos.definirValores(pos.Linha + 1, pos.Coluna - 1);
+            }
+
             return matriz;
         }
     }
