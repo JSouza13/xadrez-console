@@ -65,12 +65,12 @@ namespace Xadrez
                     Posicao esquerda = new Posicao(Posicao.Linha, Posicao.Coluna - 1);
                     if (Tab.posicaoValida(esquerda) && existeInimigo(esquerda) && Tab.peca(esquerda) == Partida.VulneravelEnPassant)
                     {
-                        matriz[esquerda.Linha, esquerda.Coluna] = true;
+                        matriz[esquerda.Linha - 1, esquerda.Coluna] = true;
                     }
                     Posicao direita = new Posicao(Posicao.Linha, Posicao.Coluna + 1);
                     if (Tab.posicaoValida(direita) && existeInimigo(direita) && Tab.peca(direita) == Partida.VulneravelEnPassant)
                     {
-                        matriz[direita.Linha, direita.Coluna] = true;
+                        matriz[direita.Linha - 1, direita.Coluna] = true;
                     }
                 }
             }
@@ -106,17 +106,16 @@ namespace Xadrez
                     Posicao esquerda = new Posicao(Posicao.Linha, Posicao.Coluna - 1);
                     if (Tab.posicaoValida(esquerda) && existeInimigo(esquerda) && Tab.peca(esquerda) == Partida.VulneravelEnPassant)
                     {
-                        matriz[esquerda.Linha, esquerda.Coluna] = true;
+                        matriz[esquerda.Linha + 1, esquerda.Coluna] = true;
                     }
                     Posicao direita = new Posicao(Posicao.Linha, Posicao.Coluna + 1);
                     if (Tab.posicaoValida(direita) && existeInimigo(direita) && Tab.peca(direita) == Partida.VulneravelEnPassant)
                     {
-                        matriz[direita.Linha, direita.Coluna] = true;
+                        matriz[direita.Linha + 1, direita.Coluna] = true;
                     }
                 }
-
-                return matriz;
             }
+            return matriz;
         }
     }
 }
